@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
-// pages/index.js, top of the file
 import { SliceZone, PrismicText, PrismicRichText } from '@prismicio/react'
 import { createClient } from '../prismicio'
 import { components } from '../slices'
@@ -8,7 +6,6 @@ import styled from 'styled-components';
 
 const Title = styled.h1`
   color: red;
-  text-3xl font-bold underline
 `;
 const Subtitle = styled.h2`
   color: blue;
