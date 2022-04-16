@@ -2,13 +2,10 @@
 
 import { PrismicRichText, PrismicLink } from '@prismicio/react'
 import styled from 'styled-components';
+import tw from "tailwind-styled-components"
 
-const Grid = styled.div`
-    display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
+const Grid = tw.div`
+max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
 `;
 
 const Card = styled.div`
