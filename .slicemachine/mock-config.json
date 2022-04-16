@@ -2,5 +2,24 @@
   "_cts": {
     "home": {},
     "page": {}
+  },
+  "slices": {
+    "Text": {
+      "default": {
+        "primary": {
+          "text": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
+      }
+    },
+    "LinkCards": {
+      "default": {
+        "primary": {}
+      }
+    }
   }
 }
