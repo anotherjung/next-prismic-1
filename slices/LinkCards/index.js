@@ -1,30 +1,20 @@
-import React from 'react'
-import { PrismicRichText } from '@prismicio/react'
+// slices/LinkCards/index.js
+
+import { PrismicRichText, PrismicLink } from '@prismicio/react'
+import styles from '../../styles/Home.module.css'
 
 const LinkCards = ({ slice }) => (
-  <section>
-    <span className="title">
-      {
-        slice.primary.title ?
-        <PrismicRichText field={slice.primary.title}/>
-        : <h2>Template slice, update me!</h2>
-      }
-    </span>
-    {
-      slice.primary.description ?
-      <PrismicRichText field={slice.primary.description}/>
-      : <p>start by editing this slice from inside Slice Machine!</p>
-    }
-    <style jsx>{`
-        section {
-          max-width: 600px;
-          margin: 4em auto;
-          text-align: center;
-        }
-        .title {
-          color: #8592e0;
-        }
-    `}</style>
+  <section className={styles.grid}>
+    {slice.items.map((item) => (
+      <PrismicLink
+        key={item.link.url}
+        field={item.link}
+        className={styles.card}
+      >
+        <h2>{item.name} &rarr;</h2>
+        <PrismicRichText field={item.description} />
+      </PrismicLink>
+    ))}
   </section>
 )
 
