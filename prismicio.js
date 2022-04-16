@@ -9,7 +9,7 @@ export const repositoryName = prismic.getRepositoryName(endpoint)
    previews use this to find your docs */
 export function linkResolver(doc) {
   switch (doc.type) {
-    case 'homepage':
+    case 'index':
       return '/'
     case 'page':
       return `/${doc.uid}`

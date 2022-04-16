@@ -1,15 +1,19 @@
 // slices/Text/index.js
 
 import { PrismicRichText } from '@prismicio/react'
-import styles from '../../styles/Home.module.css'
+import styled from 'styled-components';
+
+const Title = styled.h1`
+  color: red;
+`;
 
 const Text = ({ slice }) => (
-  <section className={styles.description}>
+  <section>
     <PrismicRichText
       field={slice.primary.text}
       components={{
         heading1: ({ children }) => (
-          <h1 className={styles.title}>{children}</h1>
+          <Title>{children}</Title>
         ),
       }}
     />
