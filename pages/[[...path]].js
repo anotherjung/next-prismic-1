@@ -63,6 +63,7 @@ export async function getStaticProps({ params }) {
   // Pass the document as prop to our page.
   return {
     props: { page },
+    revalidate: 60, // In seconds
   };
 }
 
