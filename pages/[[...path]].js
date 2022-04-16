@@ -48,14 +48,40 @@ export default function Home({ page }) {
 }
 
 
-export async function getStaticProps({ previewData }) {
-  const client = createClient({ previewData })
+// pages/[[...path]].js, bottom of the file
 
-  // Page document for our homepage from the CMS.
-  const page = await client.getByUID('page', 'home')
+// This function fetches the Page document from the CMS.
+// The document is passed to the page as a prop.
+export async function getStaticProps({ params }) {
+  // Client used to fetch CMS content.
+  const client = createClient();
 
-  // Pass the homepage as prop to our page.
+  // Page document from the CMS.
+  const uid = params.path?.[params.path?.length - 1] || "home";
+  const page = await client.getByUID("page", uid);
+
+  // Pass the document as prop to our page.
   return {
     props: { page },
-  }
+  };
+}
+
+// This function tells Next.js which URLs to accept.
+// Each Page document from the CMS will be given a URL.
+export async function getStaticPaths() {
+  // Client used to fetch CMS content.
+  const client = createClient();
+
+  // Page documents from the CMS.
+  const pages = await client.getAllByType("page");
+
+  // URL paths for each Page document from the CMS.
+  return {
+    paths: pages.map((page) => ({
+      params: {
+        path: page.uid === "home" ? [] : [page.uid],
+      },
+    })),
+    fallback: false,
+  };
 }
