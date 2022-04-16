@@ -2,6 +2,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components';
 import { nanoid } from 'nanoid'
 
+
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const nonce = nanoid()
