@@ -7,7 +7,7 @@ import { createClient } from '../prismicio'
 import { components } from '../slices'
 
 
-export default function Home({ page }) {
+export default function Index({ page }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -57,7 +57,7 @@ export async function getStaticProps({ params }) {
   const client = createClient();
 
   // Page document from the CMS.
-  const uid = params.path?.[params.path?.length - 1] || "home";
+  const uid = params.path?.[params.path?.length - 1] || "index";
   const page = await client.getByUID("page", uid);
 
   // Pass the document as prop to our page.
@@ -80,7 +80,7 @@ export async function getStaticPaths() {
   return {
     paths: pages.map((page) => ({
       params: {
-        path: page.uid === "home" ? [] : [page.uid],
+        path: page.uid === "index" ? [] : [page.uid],
       },
     })),
     fallback: false,
